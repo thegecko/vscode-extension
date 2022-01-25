@@ -1,0 +1,36 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - '*'
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+      - name: Build
+        env:
+          GITHUB_TOKEN: ${{github.token}}
+        run: |
+          yarn install --ignore-scripts
+          yarn build
+          yarn package
+      - uses: actions/upload-artifact@v2
+        with:
+          name: vsix-package
+          path: ./*.vsix
+          retention-days: 1
