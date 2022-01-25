@@ -8,7 +8,7 @@
   "publisher": "thegecko",
   "author": "Rob Moran <github@thegecko.org",
   "license": "MIT",
-  "main": "out/desktop/extension",
+  "main": "out/main/extension",
   "browser": "web/extension",
   "repository": "https://github.com/thegecko/vscode-extension",
   "qna": false,

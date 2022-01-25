@@ -33,4 +33,4 @@ jobs:
         with:
           name: vsix-package
           path: ./*.vsix
-          retention-days: 1
+          retention-days: 10
